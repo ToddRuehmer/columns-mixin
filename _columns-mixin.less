@@ -1,0 +1,24 @@
+.cols(@cols-count: 3, @gutter: @secondary-padding*.5, @column: ~'.col') {
+
+	& when (@cols-count > 0) {
+		display: flex;
+		flex-wrap: wrap;
+		gap: @gutter;
+		justify-content: flex-start;
+		list-style-type: none;
+
+		@{column} {
+			@margin-diff: ((@cols-count)-1) / @cols-count;
+			@base-width: 1 / @cols-count * 100;
+	
+			flex-basis: ~"calc(@{base-width}% - @{gutter} * @{margin-diff})";
+			margin: 0;
+		}
+	}
+
+	& when (@cols-count < 1) {
+		@{column} {
+			flex-basis: 100%;
+		}
+	}
+}
