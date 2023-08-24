@@ -22,7 +22,7 @@ Short, semantic mixin for quick columns with wrapping.
 }
 ```
 
-## Just want to throw in a 3 column mixin and write some class in the markup?
+## Just want to throw in a 3 column mixin and write some classes in the markup?
 
 ```
 .row {
