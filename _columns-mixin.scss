@@ -1,4 +1,11 @@
-@mixin cols($cols-count: 3, $gutter: $secondary-padding*.5, $column: #{'.col'}) {
+@use 'sass:list';
+@mixin cols($cols: (1, 1, 1), $gutter: 1rem, $column: #{'.col'}) {
+	$cols-count: length($cols);
+
+	$cols-capacity: 0;
+	@for $i from 1 through length($cols)  {
+		$cols-capacity: $cols-capacity + nth($cols, $i);
+	}
 
 	@if ($cols-count > 0) {
 		display: flex;
@@ -7,10 +14,19 @@
 		justify-content: flex-start;
 		list-style-type: none;
 
+		@for $i from 1 through length($cols)  {
+			#{$column}:nth-child(#{$cols-count}n + #{$i}) {
+				$margin-diff: (($cols-count)-1) / $cols-count;
+				$base-width: nth($cols, $i) / $cols-capacity * 100;
+
+				flex-basis: calc(#{$base-width}% - #{$gutter} * #{$margin-diff});
+			}
+		}
+
 		#{$column} {
 			$margin-diff: (($cols-count)-1) / $cols-count;
 			$base-width: 1 / $cols-count * 100;
-	
+
 			flex-basis: calc(#{$base-width}% - #{$gutter} * #{$margin-diff});
 			margin: 0;
 		}

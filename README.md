@@ -5,7 +5,7 @@ Short, semantic mixin for quick columns with wrapping.
 
 ```
 .row {
-  @include cols($cols-count: 4, $gutter: 1em, $column: #{'.card'});
+  @include cols($cols: (1,1,1,1), $gutter: 1em, $column: #{'.card'});
 }
 ```
 
@@ -14,10 +14,10 @@ Short, semantic mixin for quick columns with wrapping.
 ```
 .row {
   @media only screen and (max-width: 768px) {
-    @include cols($cols-count: 2, $gutter: 1em, $column: #{'.card'});
+    @include cols($cols: (1,1), $gutter: 1em, $column: #{'.card'});
   }
   @media only screen and (max-width: 500px) {
-    @include cols($cols-count: 1, $gutter: 1em, $column: #{'.card'});
+    @include cols$cols: (1), $gutter: 1em, $column: #{'.card'});
   }
 }
 ```
@@ -42,12 +42,12 @@ Short, semantic mixin for quick columns with wrapping.
 
 ```
 row {
-  @include cols($cols-count: 4, $gutter: 1em, $column: #{'.card'});
+  @include cols($cols: (1,1,1,1), $gutter: 1em, $column: #{'.card'});
   box-shadow: 10px 10px 0px 0px black;
   padding: 1em;
 
   @media only screen and (max-width: 500px) {
-    @include cols($cols-count: 1, $gutter: 1em, $column: #{'.card'});
+    @include cols($cols: (1), $gutter: 1em, $column: #{'.card'});
   }
 
   .header {
